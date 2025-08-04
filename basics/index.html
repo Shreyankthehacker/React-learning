@@ -8,48 +8,9 @@
 <body>
    
     <div id = 'header'><h1> header</h1></div>
-    <div id = 'root'></div>
+    <div id = 'root'>React aint reacting</div>
     <div id = 'footer'><h1>footer</h1></div>
 
-<script >
-
-const h1 = document.createElement("h1")
-h1.innerHTML = "Except you"
-const root_js = document.querySelector("#root")
-root_js.appendChild(h1)
-
-
-
-
-</script>
-<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-<script>
-
-const heading = React.createElement("h1",{},"Namaste everyone")
-
-const root = ReactDOM.createRoot(document.getElementById("root"))
-
-root.render(heading)
-const heading1 = React.createElement(
-    "h1",{},"Heading1"
-
-)
-
-const heading2 = React.createElement(
-    "h2",{},"heading2"
-)
-
-
-const container = React.createElement(
-    "div",
-    {
-        'id':'container'
-    }
-    ,[heading1,heading2]
-)
-
-root.render(container)
-</script>
+<script type = 'module' src = 'index.js'></script>
 </body>
 </html>
