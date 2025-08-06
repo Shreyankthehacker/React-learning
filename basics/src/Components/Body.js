@@ -1,75 +1,86 @@
-import RestuarantCard from "./Restaurant"
+import RestuarantCard from "./Restaurant";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer.js";
 
-import reslist   from "../config.js" 
-import { useEffect, useState } from "react"
-
-
-function filterData(searchText , restuarants){
-
-return restuarants.filter((restuarant) => restuarant.name.includes(searchText));
-
+function filterData(searchText, restuarants) {
+  return restuarants.filter((restuarant) =>
+    restuarant?.info?.name?.toLowerCase().includes(searchText.toLowerCase())
+  );
 }
 
+const BodyComponent = () => {
+  const [searchText, setSearchText] = useState("Biryani");
+  const [restuarants, setRestuarant] = useState([]);
+  const [filteredRes, setFilteredRes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // track shimmer state
 
-const BodyComponent = () =>{
+  useEffect(() => {
+    async function getRestaurants() {
+      try {
+        const data = await fetch(
+          "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999"
+        );
+        const jsonData = await data.json();
 
-const [searchText , setSearchText] = useState("Biryani");
+        let allRestaurants = [];
 
-// const [searchClicked , setSearchCliked] = useState(false);
+        for (let i = 0; i < jsonData?.data?.cards?.length; i++) {
+          const resData =
+            jsonData?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+          if (resData !== undefined) {
+            allRestaurants.push(...resData);
+          }
+        }
 
-const [restuarants,setRestuarant] = useState(reslist) 
-const [filteredRes , setFilteredRes] = useState(reslist)
+        setRestuarant(allRestaurants);
+        setFilteredRes(allRestaurants);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch restaurant data:", error);
+        setIsLoading(false);
+      }
+    }
 
+    getRestaurants(); // fetch once on mount
+  }, []); // ✅ empty dependency array so this runs ONCE
 
-async function getRestuarant(){
-  console.log("calling getres");
-  const data = await fetch("/restuarant.json");
-  const json = await data.json(); 
-  setFilteredRes(json.restaurants);   
-  setRestuarant(json.restaurants);
-  return json;
-}
+  // show shimmer only while loading
+  if (isLoading) return <Shimmer />;
 
-useEffect(() => {
-  console.log("calling use effect");
+  return (
+    <>
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="search"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        />
+        <button
+          className="search-btn"
+          onClick={() => {
+            const data = filterData(searchText, restuarants);
+            setFilteredRes(data);
+          }}
+        >
+          Search
+        </button>
+      </div>
 
-  async function fetchData() {
-   await getRestuarant(); // ✅ await here
-    
-  }
+      <div className="restuarant-list">
+        {filteredRes.length === 0 ? (
+          <h2>No Restaurants Found</h2>
+        ) : (
+          filteredRes.map((restuarant, idx) => (
+            <RestuarantCard restuarant={restuarant.info} key={idx} />
+          ))
+        )}
+      </div>
+    </>
+  );
+};
 
-  fetchData(); 
-}, []);
-
-
-    return (
-        <>
-        <div className="search-container">
-            <input type = 'text' 
-            className="search-input"
-            placeholder="search"
-            value = {searchText}
-            onChange={ (e) => {
-                setSearchText(e.target.value)
-            }}
-            />
-            <button className="search-btn"
-            onClick={(e)=>{
-                const data = filterData(searchText,filteredRes)
-                setRestuarant(data)
-
-            }}>Search</button>
-            
-        </div>
-        <div className="restuarant-list">
-            {
-                restuarants.map( (restuarant,idx)  =>{
-                    return <RestuarantCard restuarant = {restuarant}  key = {idx}/>
-                })
-            }
-        </div>
-        </>
-    )
-}
-
-export default BodyComponent
+export default BodyComponent;

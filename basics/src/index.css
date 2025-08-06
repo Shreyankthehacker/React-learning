@@ -66,7 +66,7 @@
   
 
 
-.card {
+  .card {
     width: 260px;
     border-radius: 12px;
     overflow: hidden;
@@ -78,7 +78,16 @@
     margin-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
+    color:black
   }
+  
+  .card img {
+    width: 100%;
+    height: 150px; /* reduce this if needed */
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
   
   .card:hover {
     transform: scale(1.03);

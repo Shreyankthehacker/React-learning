@@ -1,0 +1,1 @@
+data.cards[1].card.card.gridElements.infoWithStyle.restaurants[2].info
