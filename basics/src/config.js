@@ -22,6 +22,12 @@ const restuarants = [
       image: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/02/hyderabadi-biryani-recipe-chicken.webp",
       cuisine: ["Mutton", "Dum style"],
       rating: "4.8"
+    },
+    {
+      name:"Military hotel",
+      image :"https://www.cubesnjuliennes.com/wp-content/uploads/2020/07/Chicken-Biryani-Recipe.jpg",
+      cuisine :["Donne biryani"],
+      rating:"4.6"
     }
   ];
   

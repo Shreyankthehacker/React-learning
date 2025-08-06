@@ -1,7 +1,7 @@
-import RestuarantCard from "./Restuarant"
+import RestuarantCard from "./Restaurant"
 
 import reslist   from "../config.js" 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 function filterData(searchText , restuarants){
@@ -18,6 +18,29 @@ const [searchText , setSearchText] = useState("Biryani");
 // const [searchClicked , setSearchCliked] = useState(false);
 
 const [restuarants,setRestuarant] = useState(reslist) 
+const [filteredRes , setFilteredRes] = useState(reslist)
+
+
+async function getRestuarant(){
+  console.log("calling getres");
+  const data = await fetch("/restuarant.json");
+  const json = await data.json(); 
+  setFilteredRes(json.restaurants);   
+  setRestuarant(json.restaurants);
+  return json;
+}
+
+useEffect(() => {
+  console.log("calling use effect");
+
+  async function fetchData() {
+   await getRestuarant(); // ✅ await here
+    
+  }
+
+  fetchData(); 
+}, []);
+
 
     return (
         <>
@@ -32,7 +55,7 @@ const [restuarants,setRestuarant] = useState(reslist)
             />
             <button className="search-btn"
             onClick={(e)=>{
-                const data = filterData(searchText,restuarants)
+                const data = filterData(searchText,filteredRes)
                 setRestuarant(data)
 
             }}>Search</button>

@@ -1,0 +1,40 @@
+{
+  "restaurants": [
+    {
+      "info": {
+        "id": "1",
+        "name": "Hyderabadi Dum Biryani",
+        "image": "https://jheel.com.au/wp-content/uploads/2023/07/Untitled-design-2023-07-07T120405.682.png",
+        "cuisines": ["Hyderabadi", "Dum biryani"],
+        "avgRating": "4.7"
+      }
+    },
+    {
+      "info": {
+        "id": "2",
+        "name": "Chicken Tikka Biryani",
+        "image": "https://tiffinandteaofficial.com/wp-content/uploads/2024/05/IMG_7662-scaled.jpg",
+        "cuisines": ["Chicken Tikka", "Biryani"],
+        "avgRating": "4.5"
+      }
+    },
+    {
+      "info": {
+        "id": "3",
+        "name": "Kolkata Style Biryani",
+        "image": "https://kitchenofdebjani.com/wp-content/uploads/2018/10/India-Restaurant-Biryani.jpg",
+        "cuisines": ["Kolkata Biryani", "Potato & Egg"],
+        "avgRating": "4.6"
+      }
+    },
+    {
+      "info": {
+        "id": "4",
+        "name": "Classic Mutton Biryani",
+        "image": "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/02/hyderabadi-biryani-recipe-chicken.webp",
+        "cuisines": ["Mutton", "Dum style"],
+        "avgRating": "4.8"
+      }
+    }
+  ]
+}
