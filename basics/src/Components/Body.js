@@ -2,6 +2,8 @@ import RestuarantCard from "./Restaurant";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router";
+import { RESTUARANT_API_URL } from "./constant.js";
+import useOnline from "../utils/useOnline.js";
 
 function filterData(searchText, restuarants) {
   return restuarants.filter((restuarant) =>
@@ -14,12 +16,13 @@ const BodyComponent = () => {
   const [restuarants, setRestuarant] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // track shimmer state
+  const [online] = useOnline();
 
   useEffect(() => {
     async function getRestaurants() {
       try {
         const data = await fetch(
-          "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999"
+          RESTUARANT_API_URL
         );
         const jsonData = await data.json();
 
@@ -49,6 +52,9 @@ const BodyComponent = () => {
   }, []); 
 
   
+  if(!online){
+    return <h1>OOPS You are offline </h1>
+  }
   // show shimmer only while loading
   if (isLoading) return <Shimmer />;
 

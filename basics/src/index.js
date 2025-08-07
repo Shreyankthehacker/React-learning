@@ -11,6 +11,12 @@ import Error from "./Components/Error";
 import RestaurantMenu from "./Components/Restuarantmenu";
 import Profile from "./Components/Profile";
 import Profile_class from "./Components/Profile_class";
+// import Instamart from "./Components/InstaMart";
+import { lazy } from "react";
+import { Suspense } from "react";
+
+const InstaMart = lazy(()=> import ('./Components/InstaMart'))
+
 
 const AppLayout = () =>{
     return (
@@ -49,7 +55,15 @@ const appRouter = createBrowserRouter(
             {
                 path:"/restuarant/:id",
                 element :<RestaurantMenu/>
-            }
+            },
+            {
+              path :"/instamart",
+              element: (
+                <Suspense fallback={<h1>Loading...</h1>}>
+                  <InstaMart />
+                </Suspense>
+              ), 
+            },
         ]
         }
         
