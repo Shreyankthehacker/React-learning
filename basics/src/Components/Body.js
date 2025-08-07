@@ -42,8 +42,9 @@ const BodyComponent = () => {
     }
 
     getRestaurants(); // fetch once on mount
-  }, []); // ✅ empty dependency array so this runs ONCE
+  }, []); 
 
+  
   // show shimmer only while loading
   if (isLoading) return <Shimmer />;
 

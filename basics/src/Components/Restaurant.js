@@ -1,6 +1,6 @@
 import React from "react";
 import { IMG_CDN_URL } from "./constant";
-import restuarants from "../config";
+import restuarants from "../assets/config";
 
 
 const RestaurantCard = (props) => {

@@ -124,3 +124,93 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.shimmer-card {
+  width: 260px;
+  height: 300px; /* add height for the shimmer to show */
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    #eeeeee 8%,
+    #dddddd 18%,
+    #eeeeee 33%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 1.6s infinite linear;
+  margin: 20px 10px;
+  font-family: Arial, sans-serif;
+  color: black;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Animate the shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Optional: Layout for shimmer cards in flex/grid */
+.restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.restaurant-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fafafa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: Arial, sans-serif;
+}
+
+.restaurant-id {
+  font-size: 20px;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.restaurant-name {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.restaurant-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.menu-section {
+  margin-top: 2rem;
+}
+
+.menu-heading {
+  font-size: 24px;
+  color: #222;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.menu-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.menu-item {
+  font-size: 18px;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #ddd;
+}

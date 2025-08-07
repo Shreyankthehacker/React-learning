@@ -1,5 +1,5 @@
 import React from "react";
-import * as config from '../config.js'
+import * as config from '../assets/config.js'
 
 const Title = () => {
     return (

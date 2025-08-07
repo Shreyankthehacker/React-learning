@@ -1,6 +1,8 @@
 import React from "react";
 import Title from "./Title";
 
+import { Link } from "react-router";
+
 
 function authenticateUser() {
   return false;
@@ -13,9 +15,9 @@ const HeaderComponent = () => {
 
       <div className="nav-items" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
         <ul style={{ display: "flex", gap: "1rem", listStyle: "none" }}>
-          <li>Home</li>
-          <li>About us</li>
-          <li>Contact</li>
+          <li><Link to = "/">Home</Link></li>
+          <li><Link to = '/about'>About us</Link></li>
+          <li><Link to = '/contact'>Contact</Link></li>
           <li>Cart</li>
         </ul>
 
