@@ -1,6 +1,7 @@
 import RestuarantCard from "./Restaurant";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer.js";
+import { Link } from "react-router";
 
 function filterData(searchText, restuarants) {
   return restuarants.filter((restuarant) =>
@@ -42,6 +43,9 @@ const BodyComponent = () => {
     }
 
     getRestaurants(); // fetch once on mount
+    return ()=>{
+      console.log("this is used in fun programing instead of the DIDUNMOUNT in class based rendering ")
+    }
   }, []); 
 
   
@@ -72,11 +76,15 @@ const BodyComponent = () => {
       </div>
 
       <div className="restuarant-list">
+        
         {filteredRes.length === 0 ? (
           <h2>No Restaurants Found</h2>
         ) : (
           filteredRes.map((restuarant, idx) => (
+            <Link to={`/restuarant/${restuarant.info.id}`} key = {idx}>
             <RestuarantCard restuarant={restuarant.info} key={idx} />
+          </Link>
+          
           ))
         )}
       </div>
