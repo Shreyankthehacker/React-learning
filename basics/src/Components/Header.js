@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Title from "./Title";
 
 import { Link } from "react-router";
+import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
+
 
 
 function authenticateUser() {
@@ -9,6 +12,14 @@ function authenticateUser() {
 }
 
 const HeaderComponent = () => {
+
+  const data = useContext(UserContext)
+
+
+  // Subscribing to the store using a selector
+  const cartItems = useSelector((store)=> store.cart.items) // we only want the cart items not whole data
+
+
   return (
     <header className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-2xl border-b border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,7 +70,7 @@ const HeaderComponent = () => {
                   <button className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-gray-700 relative">
                     Cart
                     <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                      0
+                    {cartItems.length}
                     </span>
                   </button>
                 </li>
@@ -80,7 +91,7 @@ const HeaderComponent = () => {
               ) : (
                 <button
                   onClick={() => {
-                    alert("Welcome home Shreyank!");
+                    alert(`Welcome home ${data.loggedInUser}`);
                   }}
                   className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >

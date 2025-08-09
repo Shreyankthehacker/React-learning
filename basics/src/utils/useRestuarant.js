@@ -10,6 +10,7 @@ const [restaurant,setRestaurant]  = useState({})
 const [menu , setMenu] = useState([])
 
 async function getMenu(params) {
+    console.log("fetching for",params.id)
     const data = await fetch(getMenuUrl(params.id));
     console.log("data is",data)
     const json = await data.json();

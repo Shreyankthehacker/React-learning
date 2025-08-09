@@ -1,5 +1,5 @@
 import React from "react";
-
+import UserContext from "../utils/UserContext";
 class Profile_class extends React.Component{
 
     constructor(props){
@@ -43,6 +43,11 @@ class Profile_class extends React.Component{
           </li>
         ))}
       </ul>
+      <UserContext.Consumer >
+        {(data)=>{
+            <h1>data.loggedInUser</h1>
+        }}
+      </UserContext.Consumer>
                     </>
                      
         )

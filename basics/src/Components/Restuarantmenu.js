@@ -3,14 +3,27 @@ import { useParams } from "react-router";
 import { useEffect , useState } from "react";
 import { IMG_CDN_URL } from "./constant";
 import useRestuarant from "../utils/useRestuarant";
+import { addItem } from "../utils/CartSlice";
+
+import { useDispatch } from "react-redux";
+
+
+
 
 const RestaurantMenu = ( ) =>{
 
+const dispatch = useDispatch();
 
+const handleAddItem = (item) =>{
+  // dispatch action
+  dispatch(addItem(item))
+  
+
+}
 
 const params = useParams()
 const [restaurant,menu]  = useRestuarant(params)
-
+console.log("the restuarant is ",restaurant)
 if(!restaurant)return <Shimmer/>
 
 return (
@@ -47,10 +60,24 @@ return (
             {item.card.info.price && (
               <span className="text-sm text-gray-500">
                 ₹{item.card.info.price / 100}
-              </span>
+                <button  
+  className="translate-x-5 inline-block text-white bg-blue-700 hover:bg-blue-800 
+             focus:outline-none focus:ring-4 focus:ring-blue-300 
+             font-medium rounded-full text-sm px-3 py-2 
+             text-center me-2 mb-2 
+             dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+             onClick={() =>{
+              handleAddItem(item.card.info.name)
+             }}
+             >
+              Add
+            </button>
+ </span>
+             
             )}
           </li>
         ))}
+
       </ul>
     </div>
   </div>

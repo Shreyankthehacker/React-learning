@@ -15,15 +15,20 @@ import Profile_class from "./Components/Profile_class";
 import { lazy } from "react";
 import { Suspense } from "react";
 
+import { Provider } from "react-redux";
+import appStore from "./utils/AppStore";
+
 const InstaMart = lazy(()=> import ('./Components/InstaMart'))
 
 
 const AppLayout = () =>{
     return (
         <> 
+    <Provider store = {appStore}>
     <HeaderComponent/>
     <Outlet/>
     <FooterComponent/>
+    </Provider>
     </>
     );
 }
@@ -53,7 +58,7 @@ const appRouter = createBrowserRouter(
                 element:<Contact/>
             },
             {
-                path:"/restuarant/:id",
+                path:"/restaurant/:id",
                 element :<RestaurantMenu/>
             },
             {
