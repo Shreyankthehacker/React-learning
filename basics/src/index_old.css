@@ -1,0 +1,238 @@
+/* Header container */
+
+/*
+
+CSs 
+SCSS
+Inline CSS
+Component libraries - material ui , base ui , ant 
+styled components 
+Tailwind 
+  * CSS can be written on the go 
+  * Reusability 
+  * Comes with lot of prebuilt class
+  * Less bundle size 
+  * Flexible UI 
+
+
+
+*/
+
+
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    border-bottom: 2px solid #ddd;
+    background-color: #f8f9fa;
+  }
+  
+  /* Logo and title alignment */
+  .logo-title {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .title-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  /* Logo image styling */
+  .logo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Hotel name text */
+  .hotel-name {
+    margin-left: 12px;
+    font-size: 1.3rem;
+    color: darkblue;
+  }
+  /* Title text */
+  .Title {
+    margin-left: 12px;
+    color: darkblue;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* Navigation items */
+  .nav-items > ul {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-items > ul > li {
+    padding: 8px 16px;
+    margin-right: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-items > ul > li:hover {
+    background-color: #e6f0ff;
+    border-radius: 6px;
+  }
+  
+
+
+  .card {
+    width: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color:black
+  }
+  
+  .card img {
+    width: 100%;
+    height: 150px; /* reduce this if needed */
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  
+  .card:hover {
+    transform: scale(1.03);
+  }
+  
+  .imagecard {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 12px 16px;
+  }
+  
+  .restaurant-name {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .cuisine {
+    color: #777;
+    font-size: 0.95rem;
+    margin-top: 4px;
+  }
+  
+  .rating {
+    margin-top: 6px;
+    font-weight: bold;
+    color: #28a745;
+  }
+.restuarant-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card {
+  width: 260px;
+  height: 300px; /* add height for the shimmer to show */
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    #eeeeee 8%,
+    #dddddd 18%,
+    #eeeeee 33%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 1.6s infinite linear;
+  margin: 20px 10px;
+  font-family: Arial, sans-serif;
+  color: black;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Animate the shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+ 
+/* Optional: Layout for shimmer cards in flex/grid */
+.restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.restaurant-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fafafa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: Arial, sans-serif;
+}
+
+.restaurant-id {
+  font-size: 20px;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.restaurant-name {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.restaurant-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.menu-section {
+  margin-top: 2rem;
+}
+
+.menu-heading {
+  font-size: 24px;
+  color: #222;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.menu-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.menu-item {
+  font-size: 18px;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #ddd;
+}

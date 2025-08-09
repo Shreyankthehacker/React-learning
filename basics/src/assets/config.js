@@ -31,5 +31,5 @@ const restuarants = [
     }
   ];
   
-export const logo_link= "https://img.freepik.com/free-psd/asian-delicious-food-social-media-template_505751-2969.jpg?semt=ais_hybrid&w=740&q=80"
+export const logo_link= "https://i.pinimg.com/1200x/de/79/bb/de79bb3fcae9d0e4d80ab5aa581cfd5e.jpg"
 export default restuarants
